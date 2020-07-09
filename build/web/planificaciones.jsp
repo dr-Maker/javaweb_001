@@ -80,8 +80,16 @@
         <div class="panel2">
             <p>
                 Hola <%=request.getSession().getAttribute("usuario") %>
+                <br>
+                <a href="logout.jsp">Cerrar Session</a>
+                
             </p>
             <h1>Planificaciones</h1>
+            
+             <p>             
+                 <a href="registro.jsp">Registrar</a>            
+             </p>
+             
             <form id="frm" name="frm" action="planificaciones.jsp" method="post">
                 <table class="tablaSLT">
                     <tr>
@@ -163,7 +171,7 @@
                          </td>
                          <td>
                              <select class="cssslt" name="tutor" onchange="goSubmit()">
-                                 <option value="0">Selectione...</option>
+                                 <option value="0">Todos</option>
                                  <%
                                     for(Tutor item: listatutores)
                                      {
@@ -186,6 +194,10 @@ else
                      </tr>
                 </table>
             </form>
+                             
+                            
+                             
+                             
 
             <table class="plani">
                 <thead>
