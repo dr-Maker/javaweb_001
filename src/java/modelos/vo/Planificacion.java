@@ -95,6 +95,19 @@ public class Planificacion {
     public void setNomtutor(String nomtutor) {
         this.nomtutor = nomtutor;
     }
+    
+    public String txtFecha()
+    {
+    
+        if(this.fecha!=null)
+        {
+        return this.fecha.substring(8,10)+"/"+this.fecha.substring(5,7)+"/"+this.fecha.substring(0,3);
+        }else
+        {
+        return "";
+        }
+        
+    }
 
     
 }

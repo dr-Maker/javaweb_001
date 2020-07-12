@@ -111,3 +111,45 @@ join tbl_tutor as tu on tu.num = p.numtutor
 
 select * from tbl_user;
 
+insert into planificacion 
+(numdpto, numtaller, numtutor, fechainicio)
+values(1,1,1,'2020-08-03') 
+
+insert into planificacion 
+(numdpto, numtaller, numtutor, fechainicio)
+values(4,3,4,'2020-08-03') 
+
+insert into planificacion 
+(numdpto, numtaller, numtutor, fechainicio)
+values(7,5,5,'2020-08-03') 
+
+
+drop procedure sp_insert_planificacion;
+go
+create procedure sp_insert_planificacion
+@p_numdpto int,
+@p_numtaller int,
+@p_numtutor int,
+@p_fecha date
+as
+	insert into planificacion (numdpto, numtaller, numtaller, fechainicio)
+	values(@p_numdpto, @p_numtaller, @p_numtutor, @p_fecha);
+go
+
+/*
+select p.num, 
+		P.numdpto,
+		p.numtaller,
+		p.numtutor,
+		convert(varchar ,p.fechainicio, 105) as fechainicio,
+a.num as numarea,
+a.nombre as nomarea,
+d.nombre as nomdpto, 
+ta.nombre as nomtaller,
+tu.nombre as nomtutor
+from planificacion as p
+join tbl_dpto as d on d.num = p.numdpto
+join tbl_area as a on a.num = d.numarea
+join tbl_taller as ta on ta.num = p.numtaller
+join tbl_tutor as tu on tu.num = p.numtutor
+*/

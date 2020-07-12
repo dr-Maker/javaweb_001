@@ -92,4 +92,29 @@ public class PlanificacionDao
         }
         return lista;
     }
+      
+      
+      public boolean Insert(Planificacion obj)
+      {
+      boolean std = true;
+      try
+      {
+          db.Conectar();
+          sql = "sp_insert_planificacion ? ,?,?,?";
+          stmt = db.getConn().prepareStatement(sql);
+          stmt.setInt(1, obj.getNumdpto());
+          stmt.setInt(2, obj.getNumtaller());
+          stmt.setInt(3, obj.getNumtutor());
+          stmt.setString(4, obj.getFecha());
+          
+          db.EjecutarAccion(stmt);
+          db.Cerrar();
+      }
+      catch(SQLException exe)
+      {
+          System.out.println(exe.getMessage());
+      }
+      
+      return std;
+      }
 }
