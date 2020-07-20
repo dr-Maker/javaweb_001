@@ -132,9 +132,12 @@ create procedure sp_insert_planificacion
 @p_numtutor int,
 @p_fecha date
 as
-	insert into planificacion (numdpto, numtaller, numtaller, fechainicio)
+	insert into planificacion (numdpto, numtaller, numtutor, fechainicio)
 	values(@p_numdpto, @p_numtaller, @p_numtutor, @p_fecha);
 go
+
+
+
 
 /*
 select p.num, 

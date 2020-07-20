@@ -19,21 +19,21 @@ public class DptoDao
         ResultSet rs;
         Dpto obj;
          
-         public List<Dpto> Listar()
+         public List<Dpto> Listar(int numarea)
          {
              List<Dpto> lista = new ArrayList<Dpto>();
              
              try
              {
              db.Conectar();
-             sql = "select * from tbl_dpto";
+             sql = "select * from tbl_dpto where numarea = ?";
              stmt = db.getConn().prepareStatement(sql);
+             stmt.setInt(1, numarea);
              rs = db.EjecutarConsulta(stmt);
              while(rs.next())
              {
                  int num = rs.getInt("num");
                  String nombre = rs.getString("nombre");
-                 int numarea = rs.getInt("numarea");
                  lista.add(new Dpto(num, nombre, numarea));
                  
              }

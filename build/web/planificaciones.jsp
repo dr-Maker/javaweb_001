@@ -43,11 +43,12 @@
             taller = request.getParameter("taller");
             tutor = request.getParameter("tutor");
         }
+        
         AreaDao daoareas = new AreaDao();
         List<Area> listaareas = daoareas.Listar();
         
         DptoDao daodptos = new DptoDao();
-        List<Dpto> listadptos = daodptos.Listar();
+        List<Dpto> listadptos = daodptos.Listar(Integer.parseInt(area));
         
         TallerDao daotalleres = new TallerDao();
         List<Taller> listatalleres = daotalleres.Listar();
@@ -224,7 +225,7 @@ else
                                 <td><%= item.getNomarea() %> </td>
                                 <td><%= item.getNomdpto() %> </td>
                                 <td><%= item.getNomtaller() %> </td>
-                                <td><%= item.getFecha() %> </td>
+                                <td><%= item.txtFecha() %> </td>
                                 <td><%= item.getNomtutor() %> </td>
                             </tr>
                     <%

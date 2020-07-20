@@ -101,8 +101,9 @@ public class Planificacion {
     
         if(this.fecha!=null)
         {
-        return this.fecha.substring(8,10)+"/"+this.fecha.substring(5,7)+"/"+this.fecha.substring(0,3);
-        }else
+        return this.fecha.substring(8,10)+"-"+this.fecha.substring(5,7)+"-"+this.fecha.substring(0,4);
+        }
+        else
         {
         return "";
         }

@@ -20,22 +20,22 @@
     
     if(request.getParameter("area")!= null)
     {
-        if(request.getParameter("area").equals(""))
+        if(!request.getParameter("area").equals(""))
         {
             area = request.getParameter("area");
         }
         
-        if(request.getParameter("dpto").equals(""))
+        if(!request.getParameter("dpto").equals(""))
         {
             dpto = request.getParameter("dpto");
         }
         
-        if(request.getParameter("taller").equals(""))
+        if(!request.getParameter("taller").equals(""))
         {
             taller = request.getParameter("taller");
         }
         
-        if(request.getParameter("tutor").equals(""))
+        if(!request.getParameter("tutor").equals(""))
         {
             tutor = request.getParameter("tutor");
         }
@@ -48,7 +48,7 @@
         List<Area> listaareas = daoareas.Listar();
         
         DptoDao daodptos = new DptoDao();
-        List<Dpto> listadptos = daodptos.Listar();
+        List<Dpto> listadptos = daodptos.Listar(Integer.parseInt(area));
         
         TallerDao daotalleres = new TallerDao();
         List<Taller> listatalleres = daotalleres.Listar();
@@ -82,52 +82,56 @@
                 <p>
                     <label>Area</label>
                     <select required class="cssslt" name="area" onchange="goSubmit()"> 
-                            <option value="" >Seleccione..</option>
+                            <option value="" >Seleccione...</option>
                             <%
-                                  
-                                 for(Area item: listaareas)
-                                     {
-                                         if(Integer.parseInt(area) == item.getNum())
-                                         {
-                                         %>
-                                         <option selected value="<%=item.getNum() %>"><%= item.getNombre()%> </option>
-                                        <%
-                                         }
-                                         else
-                                         {
-                                         %>
-                                        <option value="<%=item.getNum() %>"><%= item.getNombre()%> </option>
-                                        <%
-                                        }
-                                        
-                                     }
-                            %>
                             
+                                for(Area item: listaareas)
+                                {
+                                    if(Integer.parseInt(area)== item.getNum())
+                                    {
+                                        %>
+                                        <option selected value="<%=item.getNum() %>" > <%=item.getNombre() %> </option>
+                                        <%
+                                    }
+                                    else
+                                    {
+                                        %>
+                                        <option  value="<%=item.getNum() %>" > <%=item.getNombre() %> </option>
+                                        <%
+                                    
+                                    }                      
+                                }
+                            
+                            %>    
+                      
                     </select>
                  </p>
                  
                  <p>
                     <label>Dpto.</label>
                     <select required class="cssslt" name="dpto" onchange="goSubmit()"> 
-                                         <%
-                                     
-                                     
-                                        for(Dpto item: listadptos)
-                                          {   
-                                             if(Integer.parseInt(dpto) == item.getNum())
-                                             {
-                                                %>
-                                                <option selected value="<%=item.getNum() %>"><%= item.getNombre() %> </option>
-                                                <%
-                                             }
-                                             else
-                                             {
-                                                %>
-                                                <option value="<%=item.getNum() %>"><%= item.getNombre() %> </option>
-                                                <%
-                                             }
-                                     }
-                                 %>
+                          <option value="" >Seleccione..</option>
+                
+                             <%
+                            
+                                for(Dpto item: listadptos)
+                                {
+                                    if(Integer.parseInt(dpto)== item.getNum())
+                                    {
+                                        %>
+                                        <option selected value="<%=item.getNum() %>" > <%=item.getNombre() %> </option>
+                                        <%
+                                    }
+                                    else
+                                    {
+                                        %>
+                                        <option  value="<%=item.getNum() %>" > <%=item.getNombre() %> </option>
+                                        <%
+                                    
+                                    }                      
+                                }
+                            
+                            %>  
                             
                     </select>
                     
@@ -138,53 +142,61 @@
                     <label>Taller</label>
                     <select required class="cssslt" name="taller" onchange="goSubmit()"> 
                             <option value="" >Seleccione..</option>
-                     <%
-                                     for(Taller item: listatalleres)
-                                     {
-                                         if(Integer.parseInt(taller)== item.getNum())
-                                         {
-                                             %>
-                                                   <option selected value="<%=item.getNum() %>"><%= item.getNombre() %> </option>   
-                                            <%      
-                                         }else
-                                          {
-                                             %>
-                                                   <option value="<%=item.getNum() %>"><%= item.getNombre() %> </option>   
-                                            <%  
-                                          }
-
-                                     }
-                                     
-                                 %>
-                        </select>
+                            
+                         <%
+                            
+                                for(Taller item: listatalleres)
+                                {
+                                    if(Integer.parseInt(taller)== item.getNum())
+                                    {
+                                        %>
+                                        <option selected value="<%=item.getNum() %>" > <%=item.getNombre() %> </option>
+                                        <%
+                                    }
+                                    else
+                                    {
+                                        %>
+                                        <option  value="<%=item.getNum() %>" > <%=item.getNombre() %> </option>
+                                        <%
+                                    
+                                    }                      
+                                }
+                            
+                            %> 
+                            
+                     </select>
                    </p>
                    
                 <p>
                     <label>Fecha de Inicio</label>
-                    <input required type="date" name="fecha" value="">
+                    <input required type="date" name="fecha" value="<%= fecha %>">
                 </p>
                    <p>
                     <label>Tutor</label>
                     <select required class="cssslt" name="tutor" onchange="goSubmit()"> 
                             <option value="" >Seleccione..</option>
+                             <%
                             
-                                  <%
-                                    for(Tutor item: listatutores)
-                                     {
-                                         if(Integer.parseInt(taller)== item.getNum())
-                                         {
-                                             %>
-                                                   <option selected value="<%=item.getNum() %>"><%= item.getNombre() %> </option>   
-                                            <%      
-                                         }
-else
-                                          {
-                                             %>
-                                                   <option value="<%=item.getNum() %>"><%= item.getNombre() %> </option>   
-                                            <%  
-                                          }
-                                       }
-                                 %>
+                                for(Tutor item: listatutores)
+                                {
+                                    if(Integer.parseInt(tutor)== item.getNum())
+                                    {
+                                        %>
+                                        <option selected value="<%=item.getNum() %>" > <%=item.getNombre() %> </option>
+                                        <%
+                                    }
+                                    else
+                                    {
+                                        %>
+                                        <option  value="<%=item.getNum() %>" > <%=item.getNombre() %> </option>
+                                        <%
+                                    
+                                    }                      
+                                }
+                            
+                            %> 
+                            
+                            
                             
                     </select>
                  </p>

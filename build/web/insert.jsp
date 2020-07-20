@@ -2,7 +2,7 @@
 <%@page import="modelos.vo.Planificacion"%>
 <%
 
-        int area = Integer.parseInt(request.getParameter("area"));
+        int numarea = Integer.parseInt(request.getParameter("area"));
         int numdpto = Integer.parseInt(request.getParameter("dpto"));
         int numtaller = Integer.parseInt(request.getParameter("taller"));
         int numtutor = Integer.parseInt(request.getParameter("tutor"));
@@ -12,6 +12,6 @@
         PlanificacionDao dao = new PlanificacionDao();
         dao.Insert(obj);
         
-        //response.sendRedirect("Planificaciones.jsp");
+        response.sendRedirect("planificaciones.jsp");
 
 %>
