@@ -27,7 +27,7 @@
                     out.print("<h1>Acceso OK</h1>");
                     request.getSession().setAttribute("web", "OK");
                     request.getSession().setAttribute("usuario", usuario);
-                    response.sendRedirect("planificaciones.jsp");
+                    
                     
                 }
                 else
